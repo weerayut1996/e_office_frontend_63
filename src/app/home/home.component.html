@@ -1,0 +1,37 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a href="#"><i class="fas fa-comment-medical fa-lg mr-2"></i>About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<div class="container-main" id="main">
+  <div class="content">
+    <div class="content-header">
+      <span (click)="openNav()" class="menu-btn"><i class="fas fa-bars fa-3x"></i></span>
+      <!-- เปลี่ยน title -->
+      <span class="text">HOME</span>
+    </div>
+    <div class="img-container">
+      <img src="/assets/home1.jpg" />
+    </div>
+    <div class="logo-container mt-3">
+      <img src="/assets/logo_div.png" />
+    </div>
+    <div class="title-container mt-3">
+      <span>ระบบสำนักงานอิเล็กทรอนิกส์</span>
+      <br>
+      <span>กฝอ.สส.ทหาร</span>
+      <br>
+      <span>{{rank}} {{userName}}</span>
+    </div>
+    <div class="content-footer">
+      <span class="icon-container" style="margin-left: 40px; margin-right: 60px"><i
+          class="fas fa-home fa-2x"></i></span>
+      <span class="icon-container" style="margin-right: 60px;"><i class="fas fa-book-reader fa-2x"></i></span>
+      <span class="icon-container" style="margin-right: 60px;"><i class="fas fa-window-restore fa-2x"></i></span>
+      <span class="icon-container"><i class="fas fa-chalkboard-teacher fa-2x"></i></span>
+    </div>
+  </div>
+</div>
