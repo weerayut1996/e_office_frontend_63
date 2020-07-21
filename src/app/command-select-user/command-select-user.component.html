@@ -1,0 +1,64 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a href="#"><i class="fas fa-comment-medical fa-lg mr-2"></i>คลังเอกสาร</a>
+  <a href="#">เอกสารเวียนทราบ</a>
+  <a href="#">เอกสารส่งออก</a>
+  <a href="#">เอกสารขออนุมัติ</a>
+  <a [routerLink]="['/command-add-file']">สั่งการ/เวียนทราบ</a>
+  <a href="#">รายงานการใช้กระดาษ</a>
+</div>
+
+<div class="container-main" id="main">
+  <div class="content">
+    <div class="content-header">
+      <span (click)="openNav()" class="menu-btn"><i class="fas fa-bars fa-3x"></i></span>
+      <!-- เปลี่ยน title -->
+      <span class="notify-container">
+        <span class="icon">
+          <i class="far fa-bell fa-3x mr-2"></i>
+        </span>
+        <span class="icon">
+          <i class="far fa-envelope fa-3x mr-2"></i>
+        </span>
+        <span class="icon">
+          <i class="fas fa-th-large fa-3x mr-2"></i>
+        </span>
+      </span>
+    </div>
+    <div class="main-content">
+      <div class="top-container">
+        <div class="step-container">
+          <div class="step-item"></div>
+          <div class="space"></div>
+          <div class="step-item active"></div>
+          <div class="space"></div>
+          <div class="step-item"></div>
+        </div>
+        <div class="label-container">
+          <div class="text">ขั้นตอนที่ 2 เลือกผู้รับเอกสาร</div>
+        </div>
+      </div>
+      <div class="document-container">
+        <div class="header">
+          <div class="title">ผู้รับทราบ-รับปฏิบัติ</div>
+          <button class="btn" (click)="addUser()"><i class="fas fa-plus-circle fa-3x"></i></button>
+        </div>
+        <div class="user-list-container">
+          <div class="mt-2 form-inline" *ngFor="let item of form.get('user_list')['controls'];let i = index">
+            <select class="form-control">
+              <option value="" disabled selected>เลือกผู้รับเอกสาร</option>
+              <option *ngFor="let user of userAll" [value]="user">{{user.rank}}{{user.first_name}} {{user.last_name}}
+              </option>
+            </select>
+            <button class="btn" (click)="removeUser(i)"><i class="fas fa-minus-circle fa-lg"></i></button>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="bottom-container">
+        <button type="button" class="btn btn-secondary" [routerLink]="['/command-add-file']">ก่อนหน้า</button>
+        <button type="button" class="btn btn-primary" (click)="submit()">ส่ง</button>
+      </div>
+    </div>
+  </div>
+</div>

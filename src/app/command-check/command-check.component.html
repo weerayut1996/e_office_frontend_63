@@ -1,0 +1,50 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a href="#"><i class="fas fa-comment-medical fa-lg mr-2"></i>คลังเอกสาร</a>
+  <a href="#">เอกสารเวียนทราบ</a>
+  <a href="#">เอกสารส่งออก</a>
+  <a href="#">เอกสารขออนุมัติ</a>
+  <a [routerLink]="['/command-add-file']">สั่งการ/เวียนทราบ</a>
+  <a href="#">รายงานการใช้กระดาษ</a>
+</div>
+
+<div class="container-main" id="main">
+  <div class="content">
+    <div class="content-header">
+      <span (click)="openNav()" class="menu-btn"><i class="fas fa-bars fa-3x"></i></span>
+      <!-- เปลี่ยน title -->
+      <span class="notify-container">
+        <span class="icon">
+          <i class="far fa-bell fa-3x mr-2"></i>
+        </span>
+        <span class="icon">
+          <i class="far fa-envelope fa-3x mr-2"></i>
+        </span>
+        <span class="icon">
+          <i class="fas fa-th-large fa-3x mr-2"></i>
+        </span>
+      </span>
+    </div>
+    <div class="main-content">
+      <div class="top-container">
+        <div class="step-container">
+          <div class="step-item"></div>
+          <div class="space"></div>
+          <div class="step-item"></div>
+          <div class="space"></div>
+          <div class="step-item active"></div>
+        </div>
+        <div class="label-container">
+          <div class="text">ขั้นตอนที่ 3 ตรวจสอบรายการส่งเอกสาร</div>
+        </div>
+      </div>
+      <div class="document-container">
+
+      </div>
+      <hr>
+      <div class="bottom-container">
+        <button type="button" class="btn btn-primary" (click)="submit()">รายการส่งเอกสารและผู้รับ</button>
+      </div>
+    </div>
+  </div>
+</div>

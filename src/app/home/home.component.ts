@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   userName: string;
   rank: string;
 
-  constructor(private backend: BackendService) {}
+  constructor(private backend: BackendService) { }
 
   ngOnInit(): void {
     this.backend.getUser().then((obj) => {
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   openNav() {
     //ความกว้างของ slide menu
-    document.getElementById("mySidenav").style.width = "420px";
+    document.getElementById("mySidenav").style.width = "320px";
   }
 
   closeNav() {
