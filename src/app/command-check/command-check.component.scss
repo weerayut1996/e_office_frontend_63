@@ -147,7 +147,8 @@
       .document-container {
         text-align: left;
         padding: 10px;
-
+        height: 360px;
+        overflow-y: scroll;
       }
 
       .bottom-container {

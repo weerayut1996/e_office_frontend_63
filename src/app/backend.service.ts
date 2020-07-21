@@ -81,6 +81,7 @@ export class BackendService {
     });
   }
 
+
   postDocument(formData: any): Promise<any> {
     return new Promise((resolve) => {
       this.http
@@ -96,6 +97,19 @@ export class BackendService {
     return new Promise((resolve) => {
       this.http
         .post<any>(backendUrl + "document/update", { id, formData }, this.httpOptions)
+        .pipe()
+        .subscribe((data) => {
+          resolve(data);
+        });
+    });
+  }
+
+  getDocumentByOwner(id): Promise<any> {
+    let headerSpecify = this.httpOptions;
+    headerSpecify.params = { id };
+    return new Promise((resolve) => {
+      this.http
+        .get<any>(backendUrl + "document/get-by-owner", headerSpecify)
         .pipe()
         .subscribe((data) => {
           resolve(data);

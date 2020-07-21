@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as jwt_decode from "jwt-decode";
+import { BackendService } from '../backend.service';
+import { environment } from "../../environments/environment";
+
 
 @Component({
   selector: 'app-command-check',
@@ -6,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./command-check.component.scss']
 })
 export class CommandCheckComponent implements OnInit {
-
-  constructor() { }
+  userData: any;
+  documentList: Array<any>;
+  backendUrl = environment.backendUrl;
+  constructor(private backendService: BackendService) { }
 
   ngOnInit(): void {
+    this.userData = jwt_decode(localStorage.getItem("token"));
+    this.backendService.getDocumentByOwner(this.userData.id).then(data => {
+      console.log(data.dataList);
+      this.documentList = data.dataList;
+    });
   }
 
   openNav() {
@@ -23,6 +34,22 @@ export class CommandCheckComponent implements OnInit {
 
   submit() {
 
+  }
+
+  formalDate(date: string) {
+    let dateFormal = new Date(date);
+    let options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return dateFormal.toLocaleDateString("th-TH", options);
+  }
+
+  formalTime(date: string) {
+    let dateFormal = new Date(date);
+    let options = { hour: '2-digit', minute: '2-digit' };
+    return dateFormal.toLocaleTimeString('th-TH', options) + " น.";
   }
 
 }
