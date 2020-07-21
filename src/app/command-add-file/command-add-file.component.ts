@@ -18,6 +18,7 @@ export class CommandAddFileComponent implements OnInit {
   uploadedId: Array<string> = [];
   previewPdf: any;
   form: FormGroup;
+  actionNumber: number = 0;
 
   constructor(private backendService: BackendService, private sanitizer: DomSanitizer,
     private router: Router,
@@ -37,6 +38,9 @@ export class CommandAddFileComponent implements OnInit {
     this.form.get("owner")['controls']['name'].setValue(fullName);
     console.log(this.form.value);
 
+    this.backendService.getCountDocumentByUser(userData.id).then(data => {
+      this.actionNumber = data.dataList.users_action;
+    })
   }
 
   createOwner(): FormGroup {

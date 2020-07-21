@@ -130,10 +130,24 @@ export class BackendService {
     });
   }
 
+
   postUpdateActionDocument(docId: String, userId: String, status: String): Promise<any> {
     return new Promise((resolve) => {
       this.http
         .post<any>(backendUrl + "document/update-action", { docId, userId, status }, this.httpOptions)
+        .pipe()
+        .subscribe((data) => {
+          resolve(data);
+        });
+    });
+  }
+
+  getCountDocumentByUser(id): Promise<any> {
+    let headerSpecify = this.httpOptions;
+    headerSpecify.params = { id };
+    return new Promise((resolve) => {
+      this.http
+        .get<any>(backendUrl + "document/get-count-waiting-by-user", headerSpecify)
         .pipe()
         .subscribe((data) => {
           resolve(data);

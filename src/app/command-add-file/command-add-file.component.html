@@ -16,7 +16,11 @@
       <!-- เปลี่ยน title -->
       <span class="notify-container">
         <span class="icon">
-          <i class="far fa-bell fa-3x mr-2"></i>
+          <a *ngIf="actionNumber != 0" [routerLink]="['/user-document-list']" style="color: #dc3545;">
+            <i class="far fa-bell fa-3x mr-2"></i>
+            <span class="badge badge-danger" style="margin-left: -20px;">{{actionNumber}}</span>
+          </a>
+          <i *ngIf="actionNumber == 0" class="far fa-bell fa-3x mr-2"></i>
         </span>
         <span class="icon">
           <i class="far fa-envelope fa-3x mr-2"></i>
