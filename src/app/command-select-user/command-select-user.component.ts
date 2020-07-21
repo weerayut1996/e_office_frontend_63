@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BackendService } from '../backend.service';
 
 @Component({
@@ -11,9 +11,11 @@ import { BackendService } from '../backend.service';
 export class CommandSelectUserComponent implements OnInit {
   form: FormGroup;
   userAll: Array<any> = Array();
+  documentId: String;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private backendService: BackendService) { }
 
   ngOnInit(): void {
@@ -24,7 +26,11 @@ export class CommandSelectUserComponent implements OnInit {
     this.backendService.getUserAll().then(data => {
       console.log(data.dataList);
       this.userAll = data.dataList;
-    })
+    });
+
+    this.documentId = this.route.snapshot.queryParamMap.get('id');
+    console.log(this.documentId);
+
   }
 
   createUser(): FormGroup {

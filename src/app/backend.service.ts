@@ -80,4 +80,15 @@ export class BackendService {
         });
     });
   }
+
+  postDocument(formData: any): Promise<any> {
+    return new Promise((resolve) => {
+      this.http
+        .post<any>(backendUrl + "document/add-file", { formData }, this.httpOptions)
+        .pipe()
+        .subscribe((data) => {
+          resolve(data);
+        });
+    });
+  }
 }
