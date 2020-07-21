@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { BackendService } from "../backend.service";
+import * as jwt_decode from "jwt-decode";
 
 @Component({
   selector: "app-home",
@@ -7,17 +8,12 @@ import { BackendService } from "../backend.service";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  userName: string;
-  rank: string;
-
-  constructor(private backend: BackendService) { }
+  userData: any;
+  constructor() { }
 
   ngOnInit(): void {
-    this.backend.getUser().then((obj) => {
-      console.log(obj);
-      this.userName = obj.data.name;
-      this.rank = obj.data2.rank;
-    });
+    this.userData = jwt_decode(localStorage.getItem("token"));
+    console.log(this.userData);
   }
 
   openNav() {

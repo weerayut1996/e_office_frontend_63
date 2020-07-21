@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private backendService: BackendService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
     this.backendService.postLogin(this.loginForm.value).then((data) => {
       console.log(data);
-      if (data.item != null) {
+      if (data.status) {
         this.router.navigate(["/home"]);
       } else {
         this.submitting = false;
