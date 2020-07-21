@@ -8,6 +8,7 @@ import { CommandSelectUserComponent } from './command-select-user/command-select
 import { CommandCheckComponent } from './command-check/command-check.component';
 import { AboutComponent } from './about/about.component';
 import { AuthGuard } from './auth.guard';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: "command-select-user", component: CommandSelectUserComponent },
   { path: "command-check", component: CommandCheckComponent },
   { path: "about", component: AboutComponent },
+  { path: "logout", component: LogoutComponent },
   {
     path: "**",
     redirectTo: "/login"

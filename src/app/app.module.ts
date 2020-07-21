@@ -14,6 +14,7 @@ import { DragulaModule } from 'ng2-dragula';
 import { CommandSelectUserComponent } from './command-select-user/command-select-user.component';
 import { CommandCheckComponent } from './command-check/command-check.component';
 import { AboutComponent } from './about/about.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AboutComponent } from './about/about.component';
     CommandAddFileComponent,
     CommandSelectUserComponent,
     CommandCheckComponent,
-    AboutComponent
+    AboutComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

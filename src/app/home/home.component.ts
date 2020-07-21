@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   openNav() {
     //ความกว้างของ slide menu
-    document.getElementById("mySidenav").style.width = "320px";
+    document.getElementById("mySidenav").style.width = "300px";
   }
 
   closeNav() {
