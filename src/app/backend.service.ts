@@ -91,4 +91,15 @@ export class BackendService {
         });
     });
   }
+
+  postUpdateDocument(id: String, formData: any): Promise<any> {
+    return new Promise((resolve) => {
+      this.http
+        .post<any>(backendUrl + "document/update", { id, formData }, this.httpOptions)
+        .pipe()
+        .subscribe((data) => {
+          resolve(data);
+        });
+    });
+  }
 }

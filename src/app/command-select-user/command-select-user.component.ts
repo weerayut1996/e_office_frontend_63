@@ -36,7 +36,9 @@ export class CommandSelectUserComponent implements OnInit {
   createUser(): FormGroup {
     return this.formBuilder.group({
       _id: ["", Validators.required],
-      name: ["", Validators.required]
+      name: ["", Validators.required],
+      status: null,
+      action_date: null
     });
   }
 
@@ -50,6 +52,13 @@ export class CommandSelectUserComponent implements OnInit {
     document.getElementById("mySidenav").style.width = "0";
   }
 
+  selectUser(index, selectIndex) {
+    console.log(this.userAll[index]);
+    let fullName = this.userAll[index].rank + this.userAll[index].first_name + " " + this.userAll[index].last_name;
+    this.form.get('user_list')['controls'][selectIndex].controls._id.setValue(this.userAll[index]._id);
+    this.form.get('user_list')['controls'][selectIndex].controls.name.setValue(fullName);
+  }
+
   addUser() {
     (this.form.get('user_list') as FormArray).push(this.createUser());
   }
@@ -59,6 +68,22 @@ export class CommandSelectUserComponent implements OnInit {
   }
 
   submit() {
-    this.router.navigate(["/command-check"]);
+    if (this.form.invalid) {
+      alert("กรุณาเลือกผู้รับ");
+      return;
+    }
+    console.log(this.form.value);
+    if (this.documentId) {
+      this.backendService.postUpdateDocument(this.documentId, this.form.value).then(data => {
+        console.log(data);
+        if (data.status == true) {
+          this.router.navigate(["/command-check"]);
+        } else {
+          alert("เกิดข้อผิดพลาด");
+        }
+      });
+    } else {
+      alert("กรุณากลับไปเลือกเอกสาร");
+    }
   }
 }

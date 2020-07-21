@@ -46,9 +46,10 @@
         </div>
         <div class="user-list-container">
           <div class="mt-2 form-inline" *ngFor="let item of form.get('user_list')['controls'];let i = index">
-            <select class="form-control">
+            <select class="form-control" #mySelect (change)='selectUser(mySelect.value,i)'>
               <option value="" disabled selected>เลือกผู้รับเอกสาร</option>
-              <option *ngFor="let user of userAll" [value]="user">{{user.rank}}{{user.first_name}} {{user.last_name}}
+              <option *ngFor="let user of userAll;let j = index" [value]="j">{{user.rank}}{{user.first_name}}
+                {{user.last_name}}
               </option>
             </select>
             <button class="btn" (click)="removeUser(i)"><i class="fas fa-minus-circle fa-lg"></i></button>
