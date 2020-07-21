@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BackendService } from '../backend.service';
+import * as jwt_decode from "jwt-decode";
+import { environment } from "../../environments/environment";
 
+const backendUrl = environment.backendUrl;
 @Component({
   selector: 'app-command-select-user',
   templateUrl: './command-select-user.component.html',
@@ -12,6 +15,7 @@ export class CommandSelectUserComponent implements OnInit {
   form: FormGroup;
   userAll: Array<any> = Array();
   documentId: String;
+  userData: any;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -30,6 +34,9 @@ export class CommandSelectUserComponent implements OnInit {
 
     this.documentId = this.route.snapshot.queryParamMap.get('id');
     console.log(this.documentId);
+
+    this.userData = jwt_decode(localStorage.getItem("token"));
+    console.log(location.origin);
 
   }
 
@@ -77,7 +84,19 @@ export class CommandSelectUserComponent implements OnInit {
       this.backendService.postUpdateDocument(this.documentId, this.form.value).then(data => {
         console.log(data);
         if (data.status == true) {
-          this.router.navigate(["/command-check"]);
+          (this.form.get('user_list') as FormArray).value.forEach(element => {
+            this.backendService.getLineUidByUser(element._id).then(data => {
+              if (data.item.line_uid) {
+                let message = "มีหนังสือสั่งการ/เวียนทราบ ส่งถึงคุณ สามารถอ่านได้ที่ " + location.origin + "/user-document-list";
+                this.backendService.sendNotificationToLine(message, [data.item.line_uid]).then(data => {
+                  this.router.navigate(["/command-check"]);
+                });
+              } else {
+                this.router.navigate(["/command-check"]);
+              }
+            })
+          });
+
         } else {
           alert("เกิดข้อผิดพลาด");
         }

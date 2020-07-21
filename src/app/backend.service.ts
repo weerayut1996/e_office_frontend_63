@@ -154,4 +154,42 @@ export class BackendService {
         });
     });
   }
+
+  getLineUidByUser(id): Promise<any> {
+    let headerSpecify = this.httpOptions;
+    headerSpecify.params = { id };
+    return new Promise((resolve) => {
+      this.http
+        .get<any>(backendUrl + "line-notify/get-uid-by-user", headerSpecify)
+        .pipe()
+        .subscribe((data) => {
+          resolve(data);
+        });
+    });
+  }
+
+  postUpdateUid(id: String, uid: String): Promise<any> {
+    return new Promise((resolve) => {
+      this.http
+        .post<any>(backendUrl + "line-notify/update-uid", { id, uid }, this.httpOptions)
+        .pipe()
+        .subscribe((data) => {
+          resolve(data);
+        });
+    });
+  }
+
+  sendNotificationToLine(msg: String, uid: String[]) {
+    return new Promise((resolve) => {
+      return this.http
+        .post<any>(
+          backendUrl + "line-notify/send-message",
+          { msg, uid },
+          this.httpOptions
+        )
+        .pipe().subscribe((data: any) => {
+          resolve(data);
+        });
+    });
+  }
 }

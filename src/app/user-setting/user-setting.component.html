@@ -30,30 +30,18 @@
     <div class="main-content">
       <div class="top-container">
         <div class="label-container">
-          <div class="text">คลังเอกสาร</div>
+          <div class="text">ตั้งค่า UID ของ Line</div>
         </div>
       </div>
       <div class="document-container">
         <div class="card">
-          <h5 class="card-header">รายการเอกสาร</h5>
-          <div class="card-body pb-0" *ngFor="let item of documentList">
-            <h5 class="card-title" *ngFor="let file of item.files"><a href="{{backendUrl}}preview/{{file._id}}"
-                target="_blank"> {{file.name}}</a></h5>
-            <p class="card-text mb-1 text-muted"><small>ส่งถึง:</small></p>
-            <div class="card-text mb-1 border p-1" *ngFor="let user of item.users_action">{{user.name}}
-              <div *ngIf="user.status != null">
-                <i title="รับทราบ" style="color: green;" class="fas fa-check-circle"></i>
-                <small class="text-muted">
-                  เมื่อ:
-                  {{formalDate(user.action_date)}}
-                  {{formalTime(user.action_date)}}</small>
-              </div>
-              <i *ngIf="user.status == null" title="ยังไม่อ่าน" style="color: rgb(189, 189, 0);"
-                class="fas fa-exclamation-triangle"></i>
+          <h5 class="card-header">UID</h5>
+          <div class="card-body pb-0" [formGroup]="form" style="text-align: center;">
+            <div class="mt-2">
+              <input formControlName="uid" type="text" class="form-control" placeholder="UID Line" />
             </div>
-            <p class="card-text mb-1 text-muted"><small>ส่งเมื่อ: {{formalDate(item.createAt)}}
-                {{formalTime(item.createAt)}}</small></p>
             <hr class="my-0">
+            <button type="button" class="btn btn-primary my-2" (click)="submit()">บันทึก</button>
           </div>
         </div>
       </div>

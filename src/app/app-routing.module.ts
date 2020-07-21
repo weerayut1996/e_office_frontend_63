@@ -11,6 +11,7 @@ import { AuthGuard } from './auth.guard';
 import { LogoutComponent } from './logout/logout.component';
 import { UserDocumentListComponent } from './user-document-list/user-document-list.component';
 import { OwnerListDocumentComponent } from './owner-list-document/owner-list-document.component';
+import { UserSettingComponent } from './user-setting/user-setting.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: "logout", component: LogoutComponent },
   { path: "user-document-list", component: UserDocumentListComponent },
   { path: "owner-document-list", component: OwnerListDocumentComponent },
+  { path: "user-setting", component: UserSettingComponent },
   {
     path: "**",
     redirectTo: "/login"

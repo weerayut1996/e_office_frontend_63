@@ -1,0 +1,160 @@
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  width: 300px;
+
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  //เปลี่ยนสีพื้นหลัง slide menu
+  background-color: rgba(70, 10, 180, 0.3);
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  //สีตัวอักษร slide menu และ icon
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #cc1212;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+    // width: 450px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+.container-header {
+  position: relative;
+
+}
+
+.container-main {
+  text-align: center;
+  // background dummy
+  // background-image: url('../../assets/classroom.jpg');
+  background-color: #b9b9b9;
+
+  .content {
+    margin: auto;
+    width: 400px;
+    height: 600px;
+    // background home
+    // background-color: rgba(0, 0, 0, 0.3);
+    background-color: white;
+    position: relative;
+
+    .content-header {
+      position: absolute;
+      margin: auto;
+      text-align: left;
+      width: 400px;
+
+      .menu-btn {
+        //เปลี่ยนสี Burger Menu
+        color: black;
+        vertical-align: middle;
+      }
+
+      .notify-container {
+        float: right;
+        margin-right: 10px;
+
+        .icon {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .main-content {
+      top: 60px;
+      position: relative;
+
+      .top-container {
+        padding: 10px 0px;
+        margin: 0px 10px;
+        background-color: rgba(211, 211, 211, 0.3);
+
+        .step-container {
+          text-align: center;
+
+          .step-item {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #969696;
+            border-radius: 20px;
+            background-color: white;
+
+            &.active {
+              background-color: rgb(44, 147, 231);
+            }
+          }
+
+          .space {
+            display: inline-block;
+            width: 20px;
+          }
+        }
+
+        .label-container {
+          .text {
+            display: inline-block;
+            color: white;
+            background-color: rgb(44, 147, 231);
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .document-container {
+        text-align: left;
+        padding: 10px;
+        height: 360px;
+        overflow-y: scroll;
+      }
+
+      .bottom-container {
+        padding: 10px;
+
+
+      }
+    }
+  }
+}
