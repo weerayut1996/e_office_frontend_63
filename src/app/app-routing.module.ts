@@ -7,13 +7,14 @@ import { CommandAddFileComponent } from './command-add-file/command-add-file.com
 import { CommandSelectUserComponent } from './command-select-user/command-select-user.component';
 import { CommandCheckComponent } from './command-check/command-check.component';
 import { AboutComponent } from './about/about.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" }, //redirect หน้าแรกไป Login
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "home", component: HomeComponent },
+  { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
   { path: "command-add-file", component: CommandAddFileComponent },
   { path: "command-select-user", component: CommandSelectUserComponent },
   { path: "command-check", component: CommandCheckComponent },

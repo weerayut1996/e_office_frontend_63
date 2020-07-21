@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { BackendService } from "../backend.service";
 import * as jwt_decode from "jwt-decode";
 
 @Component({
@@ -13,7 +12,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = jwt_decode(localStorage.getItem("token"));
-    console.log(this.userData);
   }
 
   openNav() {
