@@ -15,6 +15,7 @@ import { CommandSelectUserComponent } from './command-select-user/command-select
 import { CommandCheckComponent } from './command-check/command-check.component';
 import { AboutComponent } from './about/about.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UserDocumentListComponent } from './user-document-list/user-document-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LogoutComponent } from './logout/logout.component';
     CommandSelectUserComponent,
     CommandCheckComponent,
     AboutComponent,
-    LogoutComponent
+    LogoutComponent,
+    UserDocumentListComponent
   ],
   imports: [
     BrowserModule,

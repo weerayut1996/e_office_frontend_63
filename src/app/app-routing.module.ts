@@ -9,6 +9,7 @@ import { CommandCheckComponent } from './command-check/command-check.component';
 import { AboutComponent } from './about/about.component';
 import { AuthGuard } from './auth.guard';
 import { LogoutComponent } from './logout/logout.component';
+import { UserDocumentListComponent } from './user-document-list/user-document-list.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: "command-check", component: CommandCheckComponent },
   { path: "about", component: AboutComponent },
   { path: "logout", component: LogoutComponent },
+  { path: "user-document-list", component: UserDocumentListComponent },
   {
     path: "**",
     redirectTo: "/login"
